@@ -1,0 +1,92 @@
+/* General Styles */
+#packages {
+  margin-right: 30px;
+  padding: 40px;
+  text-align: center;
+  background-color: white;
+}
+
+#packages h2 {
+  margin-top: 10px;
+  margin-right: 5px;
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Package Box Styling */
+.package {
+  display: inline-block;
+  width: 30%;
+  margin: 20px;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.package img {
+  width: 100%; /* Ensures the image takes the full width of its container */
+  height: 200px; /* Sets a fixed height for consistency */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  border-radius: 10px; /* Adds rounded corners for a polished look */
+}
+
+.package h3 {
+  font-size: 1.5em;
+  margin-top: 10px;
+  color: #333;
+}
+
+.package p {
+  font-size: 1.1em;
+  margin: 10px 0;
+  color: #555;
+}
+
+.package .price {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #007BFF;
+}
+
+.package button {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.package button:hover {
+  background-color: #0056b3;
+  transform: translateY(-3px);
+}
+
+.package:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #packages {
+    padding: 20px;
+  }
+
+  .package {
+    width: 45%; /* Adjusts the width of each package on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .package {
+    width: 90%; /* Makes each package take up most of the screen on mobile */
+  }
+}

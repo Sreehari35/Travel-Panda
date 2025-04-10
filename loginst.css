@@ -1,0 +1,135 @@
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #ffffff;
+}
+
+/* Login Box */
+.login-box {
+    margin: 10%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+}
+
+/* Login Header */
+.login-header header {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #00bcd4;
+    text-transform: uppercase;
+}
+
+/* Input Fields */
+.input-box {
+    margin: 20px;
+    align-items: center;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 1px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 25px;
+    color: #ffffff;
+    font-size: 1em;
+    outline: none;
+    text-align: center;
+    transition: background 0.3s ease-in-out;
+}
+
+.input-field:focus {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Forgot Section */
+.forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+}
+
+.forgot a {
+    color: #00bcd4;
+    text-decoration: none;
+}
+
+.forgot a:hover {
+    text-decoration: underline;
+}
+
+/* Submit Button */
+.input-submit {
+    position: relative;
+    margin-top: 20px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: #00bcd4;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #008c9e;
+}
+
+/* Label for Submit */
+.input-submit label {
+    display: block;
+    margin-top: 10px;
+    color: #ffffff;
+    font-weight: normal;
+    font-size: 0.9em;
+}
+
+/* Sign-Up Link */
+.sign-up-link {
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.sign-up-link a {
+    color: #00bcd4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.sign-up-link a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 400px) {
+    .login-box {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .input-field {
+        font-size: 0.9em;
+    }
+
+    .submit-btn {
+        font-size: 0.9em;
+    }
+}

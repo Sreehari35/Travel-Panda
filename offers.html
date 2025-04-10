@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="offersst.css" />
+    <title>Offers | Travel Panda</title>
+  </head>
+  <body>
+        <header>
+      <div class="section__container">
+        <div class="header__content">
+          <h1>Exclusive Offers</h1>
+          <p>
+            Unleash your wanderlust with our exclusive offers! Grab unbeatable
+            discounts on your next adventure and make your travel dreams come
+            true at a fraction of the cost.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <section class="offers__container">
+      <div class="section__container">
+        <h2 class="section__title">Hot Deals Just for You</h2>
+        <p class="section__subtitle">
+          Hand-picked deals to make your journey unforgettable
+        </p>
+        <div class="offers__grid">
+          <div class="offer__card">
+            <img src="paris.png" alt="Paris" />
+            <div class="offer__content">
+              <h3>Paris - The City of Love</h3>
+              <p>Flat 20% off on romantic getaways to Paris</p>
+              <button onclick="location.href='payment.html'" class="offer__button">Book Now</button>
+            </div>
+          </div>
+          <div class="offer__card">
+            <img src="maldives.png" alt="Maldives" />
+            <div class="offer__content">
+              <h3>Maldives - Tropical Paradise</h3>
+              <p>Exclusive deals starting at ₹15,000/night</p>
+              <button onclick="location.href='payment.html'" class="offer__button">Book Now</button>
+            </div>
+          </div>
+          <div class="offer__card">
+            <img src="egypt.png" alt="Egypt" />
+            <div class="offer__content">
+              <h3>Egypt - Land of Pharaohs</h3>
+              <p>Up to 25% off on historical tours</p>
+              <button onclick="location.href='payment.html'" class="offer__button">Book Now</button>
+            </div>
+          </div>
+          <div class="offer__card">
+            <img src="newyork.png" alt="New York" />
+            <div class="offer__content">
+              <h3>New York - The Big Apple</h3>
+              <p>Save up to 15% on luxury stays in NYC</p>
+              <button onclick="location.href='payment.html'" class="offer__button">Book Now</button>
+            </div>
+          </div>
+          <div class="offer__card">
+            <img src="bali.png" alt="Bali" />
+            <div class="offer__content">
+              <h3>Bali - Blissful Escape</h3>
+              <p>Travel packages starting at ₹10,000</p>
+              <button onclick="location.href='payment.html'" class="offer__button">Book Now</button>
+            </div>
+          </div>
+          <div class="offer__card">
+            <img src="tokyo.png" alt="Tokyo" />
+            <div class="offer__content">
+              <h3>Tokyo - Neon Wonderland</h3>
+              <p>Flat ₹5,000 off on cultural experiences</p>
+              <button onclick="location.href='payment.html'" class="offer__button">Book Now</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="section__container">
+        <h4>Travel Panda</h4>
+        <p>
+          Let your adventures begin! Wherever you go, we’re here to make your
+          journey extraordinary.
+        </p>
+        <p id="Left">&copy; Travel Panda.2025. All rights reserved.</p>
+        <div>
+          <a class="anchor" href="#" target="_blank">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a class="anchor" href="#" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a class="anchor" href="#" target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const speechSynthesisInstance = window.speechSynthesis;
+
+    if (!speechSynthesisInstance) {
+        console.warn("Speech Synthesis not supported in this browser.");
+        return;
+    }
+
+    let currentUtterance = null;
+    let isPlaying = true;
+    let availableVoices = [];
+    let currentLanguage = 'en';
+
+    function speakText(text, langCode = currentLanguage) {
+        if (!text || !isPlaying) return;
+
+        text = text.replace(/\bUS\b/g, "us").replace(/\bHTML\b/g, "H T M L");
+        speechSynthesisInstance.cancel();
+
+        currentUtterance = new SpeechSynthesisUtterance(text);
+        currentUtterance.lang = langCode;
+
+        const matchedVoice = availableVoices.find(v => v.lang.toLowerCase().includes(langCode.toLowerCase()));
+        currentUtterance.voice = matchedVoice || availableVoices[0];
+
+        setTimeout(() => {
+            speechSynthesisInstance.speak(currentUtterance);
+        }, 100);
+    }
+
+    function stopSpeaking() {
+        if (speechSynthesisInstance.speaking || speechSynthesisInstance.pending) {
+            speechSynthesisInstance.cancel();
+        }
+    }
+
+    function addListenersToElement(element) {
+        const text = element.innerText.trim() ||
+            element.getAttribute("aria-label") ||
+            element.placeholder ||
+            element.alt ||
+            element.getAttribute("title") || "";
+        if (text) {
+            element.addEventListener("mouseenter", () => {
+                if (isPlaying) speakText(text);
+            });
+            element.addEventListener("mouseleave", stopSpeaking);
+            element.addEventListener("focus", () => {
+                if (isPlaying) speakText(text);
+            });
+            element.addEventListener("blur", stopSpeaking);
+            element.addEventListener("touchstart", () => {
+                if (isPlaying) speakText(text);
+            });
+            element.addEventListener("touchend", stopSpeaking);
+        }
+    }
+
+    const allTextElements = document.querySelectorAll("p, h1, h2, h3, h4, h5, h6, li, span, button, input[aria-label], input[placeholder], img[alt], div[aria-label]");
+    allTextElements.forEach(addListenersToElement);
+
+    const pageTitle = document.title;
+    if (isPlaying && pageTitle) {
+        speakText("Page Title: " + pageTitle);
+    }
+
+    const readAllButton = document.createElement("button");
+    readAllButton.innerText = "Read All Content";
+    readAllButton.title = "Button: Read all content on the page";
+    readAllButton.style.position = "fixed";
+    readAllButton.style.bottom = "10px";
+    readAllButton.style.right = "10px";
+    readAllButton.style.zIndex = 1000;
+    document.body.appendChild(readAllButton);
+    addListenersToElement(readAllButton);
+
+    readAllButton.addEventListener("click", function () {
+        const allContent = Array.from(allTextElements)
+            .map(element => element.innerText.trim())
+            .filter(text => text.length > 0)
+            .join(". ");
+        speakText(allContent);
+    });
+
+    const startStopButton = document.createElement("button");
+    startStopButton.innerText = "Start/Stop Playback";
+    startStopButton.title = "Button: Start or stop playback";
+    startStopButton.style.position = "fixed";
+    startStopButton.style.top = "10px";
+    startStopButton.style.right = "10px";
+    startStopButton.style.zIndex = 1000;
+    document.body.appendChild(startStopButton);
+    addListenersToElement(startStopButton);
+
+    startStopButton.addEventListener("click", function () {
+        isPlaying = !isPlaying;
+        stopSpeaking();
+
+        if (isPlaying) {
+            speakText("Playback started.");
+        } else {
+            speakText("Playback stopped.");
+        }
+    });
+
+    const languageSelector = document.createElement("select");
+    languageSelector.title = "Dropdown: Select language";
+    languageSelector.style.position = "fixed";
+    languageSelector.style.top = "50px";
+    languageSelector.style.right = "10px";
+    languageSelector.style.zIndex = 1000;
+    document.body.appendChild(languageSelector);
+    addListenersToElement(languageSelector);
+
+    const languages = {
+        en: "English",
+        es: "Spanish",
+        fr: "French"
+    };
+
+    Object.entries(languages).forEach(([code, name]) => {
+        const option = document.createElement("option");
+        option.value = code;
+        option.innerText = name;
+        languageSelector.appendChild(option);
+    });
+
+    languageSelector.addEventListener("change", function () {
+        currentLanguage = this.value;
+        speakText(`Language changed to ${languages[this.value]}`, currentLanguage);
+    });
+
+    window.speechSynthesis.onvoiceschanged = () => {
+        availableVoices = speechSynthesisInstance.getVoices();
+    };
+
+    availableVoices = speechSynthesisInstance.getVoices();
+});
+</script>
+
+  </body>
+</html>
